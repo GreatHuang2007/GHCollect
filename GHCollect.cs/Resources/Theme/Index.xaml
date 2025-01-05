@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:converters="clr-namespace:GHCollect.Resources">
+    
+    <converters:BrightnessToForegroundConverter x:Key="BrightnessToForegroundConverter" />
+    
+    <!-- 主题色和前景色 -->
+    <Color x:Key="ThemeBackgroundColor">Aqua</Color>
+    <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{StaticResource ThemeBackgroundColor}"/>
+    <!-- 自动产生黑色/白色 -->
+    <SolidColorBrush x:Key="ThemeForegroundBrush">
+        <SolidColorBrush.Color>
+            <MultiBinding Converter="{StaticResource BrightnessToForegroundConverter}">
+                <Binding Source="{StaticResource ThemeBackgroundColor}" />
+            </MultiBinding>
+        </SolidColorBrush.Color>
+    </SolidColorBrush>
+
+    <!-- 主题副色和前景色 -->
+    <Color x:Key="ThemeAlterBackgroundColor">Aqua</Color>
+    <SolidColorBrush x:Key="ThemeAlterBackgroundBrush" Color="{StaticResource ThemeBackgroundColor}"/>
+    <!-- 自动产生黑色/白色 -->
+    <SolidColorBrush x:Key="ThemeAlterForegroundBrush">
+        <SolidColorBrush.Color>
+            <MultiBinding Converter="{StaticResource BrightnessToForegroundConverter}">
+                <Binding Source="{StaticResource ThemeBackgroundBrush}" />
+            </MultiBinding>
+        </SolidColorBrush.Color>
+    </SolidColorBrush>
+
+    <!--背景色 用于深浅主题变化-->
+    <Color x:Key="BackgroundColor">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
+
+    <!--hover/press的cover色-->
+    <Color x:Key="HoverCoverColor">#407F7F7F</Color>
+    <SolidColorBrush x:Key="HoverCoverColorBrush" Color="{StaticResource HoverCoverColor}"/>
+    <Color x:Key="PressCoverColor">#607F7F7F</Color>
+    <SolidColorBrush x:Key="PressCoverColorBrush" Color="{StaticResource HoverCoverColor}"/>
+</ResourceDictionary>

@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:GHCollect.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GHCollect.cs;component/Resources/Theme/Index.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <converters:BrushBrightnessToForegroundBrushConverter x:Key="BrushBrightnessToForegroundBrushConverter"/>
+    
+    <ControlTemplate x:Key="TemplateButton" TargetType="Button">
+        <Border CornerRadius="3"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding Foreground}"
+                Background="{TemplateBinding Background}"
+                SnapsToDevicePixels="True"
+                x:Name="border">
+            <Border Name="gd_cover" CornerRadius="{Binding CornerRadius, ElementName=border}">
+                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gd_cover" Property="Background" Value="{StaticResource ResourceKey=HoverCoverColorBrush}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="gd_cover" Property="Background" Value="{StaticResource ResourceKey=PressCoverColorBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="AutoForeground" TargetType="Button">
+        <Setter Property="Foreground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Converter={StaticResource BrushBrightnessToForegroundBrushConverter}}"/>
+    </Style>
+    
+</ResourceDictionary>

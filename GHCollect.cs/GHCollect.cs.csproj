@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>GHCollect</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Update="Resources\Assets.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Assets.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Converters.cs">
+		  <Generator>MSBuild:Compile</Generator>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\Assets.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Assets.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+</Project>
